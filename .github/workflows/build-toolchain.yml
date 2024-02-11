@@ -19,7 +19,7 @@ jobs:
           - x86_64
         tag:
           - type: dev
-            version: snapshots
+            version: snapshots-23.05
         libc:
           - musl
           - glibc
