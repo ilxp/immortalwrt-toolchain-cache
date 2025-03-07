@@ -1,4 +1,4 @@
-name: openwrt-24.10
+name: openwrt-24.10-gcc15
 
 on: workflow_dispatch
 
@@ -17,7 +17,7 @@ jobs:
           #- netgear_r8500
           - x86_64
         tag:
-          - type: dev
+          - type: rc2
             version: openwrt-24.10
         libc:
           - musl
@@ -67,7 +67,7 @@ jobs:
         [ "${{ matrix.libc }}" = "glibc" ] && export ENABLE_GLIBC=y
         [ "${{ matrix.tools }}" = "ccache" ] && export ENABLE_CCACHE=y
         #BUILD_TOOLCHAIN=y ENABLE_LTO=y ENABLE_BPF=y USE_GCC15=y ENABLE_MOLD=y bash <(curl -sS ${{ secrets.script_url_general }}) ${{ matrix.tag.type }} ${{ matrix.model }}
-        BUILD_TOOLCHAIN=y ENABLE_BPF=y ENABLE_MOLD=y bash <(curl -sS ${{ secrets.script_url_iS }}) ${{ matrix.tag.type }} ${{ matrix.model }}
+        BUILD_TOOLCHAIN=y ENABLE_LTO=y ENABLE_BPF=y USE_GCC15=y ENABLE_MOLD=y bash <(curl -sS ${{ secrets.script_url_iS }}) ${{ matrix.tag.type }} ${{ matrix.model }}
 
     - name: Create release
       uses: ncipollo/release-action@v1.14.0
