@@ -75,7 +75,7 @@ jobs:
         name: ${{ matrix.tag.version }}
         allowUpdates: true
         tag: ${{ matrix.tag.version }}
-        commit: openwrt-24.10
+        commit: main
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}
         artifacts: ${{ env.WORKDIR }}/openwrt/toolchain-cache/*
